@@ -87,7 +87,7 @@ api 端使用 [nestjs](https://docs.nestjs.com/) 进行开发
 
 `sudo systemctl start nginx`
 
- 检查配置
+检查配置
 
 ```
   nginx -t
@@ -104,3 +104,53 @@ api 端使用 [nestjs](https://docs.nestjs.com/) 进行开发
 `npm install -g pnpm`
 
 `npm install pm2 -g`
+
+
+### SSL 配置
+
+1. Certbot
+
+```
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
+sudo apt install --only-upgrade certbot python3-certbot-nginx
+
+
+mkdir -p /var/www/html/.well-known/acme-challenge/
+echo "Test file content" > /var/www/html/.well-known/acme-challenge/testfile
+
+sudo chmod -R 755 /var/www/html/.well-known
+
+```
+
+申请证书
+
+```
+sudo certbot --nginx -d web1.snailshellsoft.com -d web2.snailshellsoft.com
+
+```
+
+2. 在 nginx 中配
+
+ ```
+  location /.well-known/acme-challenge/ {
+        root /var/www/html;
+        try_files $uri $uri/ =404;
+    }
+
+```
+
+3. 重新加载
+
+```
+sudo nginx -t  # 测试配置文件是否正确
+sudo systemctl reload nginx  # 重新加载Nginx
+
+```
+
+4. 自动续期
+
+ ```
+   sudo certbot renew --dry-run
+   ```
+
