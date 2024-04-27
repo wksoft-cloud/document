@@ -1,0 +1,15 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "前后端开发基础框架",
+  "author": "南京蜗壳科技有限公司",
+  "main": "index.js",
+  "scripts": {
+    "api:dev": "pnpm --filter api run start:dev",
+    "api:build": "pnpm --filter api run build",
+    "web:dev": "pnpm --filter web run dev",
+    "web:ssr": "pnpm --filter web run build",
+    "web:build": "pnpm --filter web run generate"
+  },
+  "keywords": []
+}
