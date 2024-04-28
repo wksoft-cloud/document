@@ -7,7 +7,8 @@ export default defineNuxtConfig({
         '@element-plus/nuxt'
     ],
     css: [
-        '~/assets/css/tailwind.css'
+        '~/assets/css/tailwind.css',
+        '@vueup/vue-quill/dist/vue-quill.snow.css',
     ],
     postcss: {
         plugins: {

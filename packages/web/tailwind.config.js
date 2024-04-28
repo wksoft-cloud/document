@@ -8,8 +8,13 @@ export default {
     './app.vue',
     './error.vue'
   ],
+  import:true,
   theme: {
-    extend: {}
+    extend: {
+      backgroundImage:{
+        'login':"url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')"
+      }
+    },
   },
   plugins: []
 }
