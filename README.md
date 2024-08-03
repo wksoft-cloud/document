@@ -1,51 +1,8 @@
-# template
+# document
 
-✨ 模板
+✨ 开发知识库
 
-### 命令行说明
-
-- `web:dev` web端开发
-- `web:ssr` web端ssr打包
-- `web:build` web端静态打包
-- `api:dev` api端开发
-- `api:build` api端打包
-
-
-### 目录结构
-
-```
-|-- template
-    |-- config ---------------------------------------------- 文件配置
-    |-- packages -------------------------------------------- 项目包
-        |-- web --------------------------------------------- PC 端的项目（包含前后端）
-        |-- api --------------------------------------------- 后端接口（包含前后端）
-```
-
-### web 端配置与说明
-
-web 端使用 [nuxtjs](https://nuxt.com/) 进行开发,具体配置可参考文档。
-
-在此基础上，我们增接了默认配置
-
-- [Pinia](https://pinia.vuejs.org/)
-- [ElementPlus](https://element-plus.org/zh-CN/)
-- [Tailwindcss](https://tailwindcss.com/)
-
-以上项目已经进行了 ssr 配置，可直接使用
-
-### api 端配置与说明
-
-api 端使用 [nestjs](https://docs.nestjs.com/) 进行开发
-
-在此基础上，我们增加了默认配置及部分常用模块
-
-- 错误拦截且按照格式统一回复
-- JWT 认证及拦截
-- Prisma 默认配置
-
-### 其他配置
-
-#### prisma 常用操作
+# prisma 常用操作
 
 ##### 1. 生成数据库对应文件
 
@@ -65,7 +22,9 @@ api 端使用 [nestjs](https://docs.nestjs.com/) 进行开发
 
 ` pnpm nest g res <team>`
 
-### debian 安装 nvm
+# debian 安装 nodejs 环境
+
+### 安装 nvm
 
 `sudo apt update`
 
@@ -75,12 +34,11 @@ api 端使用 [nestjs](https://docs.nestjs.com/) 进行开发
 
 `sudo curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash`
 
-`sudo source ~/.bashrc`
+`source ~/.bashrc`
 
-`sudo nvm --version`
+`nvm --version`
 
-`sudo nvm install node`
-
+`nvm install node`
 
 ### 安装 nginx
 
@@ -106,13 +64,11 @@ api 端使用 [nestjs](https://docs.nestjs.com/) 进行开发
 
 `npm install pm2 -g`
 
+### 域名证书 SSL 配置
 
-### SSL 配置
-
-1. Certbot
+Certbot
 
 ```
-sudo apt update
 sudo apt install certbot python3-certbot-nginx
 sudo apt install --only-upgrade certbot python3-certbot-nginx
 
@@ -131,7 +87,7 @@ sudo certbot --nginx -d web1.snailshellsoft.com -d web2.snailshellsoft.com
 
 ```
 
-2. 在 nginx 中配
+在 nginx 中配
 
  ```
   location /.well-known/acme-challenge/ {
@@ -141,7 +97,7 @@ sudo certbot --nginx -d web1.snailshellsoft.com -d web2.snailshellsoft.com
 
 ```
 
-3. 重新加载
+重新加载
 
 ```
 sudo nginx -t  # 测试配置文件是否正确
@@ -149,9 +105,32 @@ sudo systemctl reload nginx  # 重新加载Nginx
 
 ```
 
-4. 自动续期
+自动续期
 
- ```
+```
    sudo certbot renew --dry-run
-   ```
+```
 
+# debian 配置 github
+
+### 安装 git
+
+`sudo apt install git`
+
+### 在服务器中配置 ssh 证书，用于从 github 账户中 clone 项目
+
+```
+ssh-keygen -t ed25519 -C "antonin.chenying@gmail.com"
+```
+
+### 获取密钥并存储到 github 中
+
+```
+cat ~/.ssh/id_ed25519.pub
+```
+
+### 在服务器中克隆项目
+
+```
+ git clone git@github.com:wokesoft/serverless.git
+```
