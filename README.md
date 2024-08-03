@@ -134,3 +134,32 @@ cat ~/.ssh/id_ed25519.pub
 ```
  git clone git@github.com:wokesoft/serverless.git
 ```
+
+# mac 端获取 泛域名 SSL 证书
+
+在 mac 上获取通配符证书
+
+1. 安装
+
+`brew install python`
+
+`python3 -m venv myenv`
+
+`source myenv/bin/activate`
+
+`pip install certbot certbot-dns-aliyun`
+
+`chmod 600 config/dns/aliyun.ini`
+`chmod 600 config/dns/cli.ini`
+
+` sudo certbot certonly \
+--dns-aliyun-credentials config/dns/aliyun.ini \
+--config config/dns/cli.ini \
+-d "wksoft.cloud" -d "*.wksoft.cloud" -d "*.ft.wksoft.cloud" -d "*.ftadmin.wksoft.cloud"
+`
+
+`deactivate`
+
+`sudo cat  ` 查看即可
+
+`openssl ec -in config/dns/privkey.pem -out rsa_key.pem` 转 rsa 密钥
