@@ -163,3 +163,15 @@ cat ~/.ssh/id_ed25519.pub
 `sudo cat  ` 查看即可
 
 `openssl ec -in config/dns/privkey.pem -out rsa_key.pem` 转 rsa 密钥
+
+
+# 微信支付库配置
+
+```
+$ ./node_modules/.bin/wxpay crt \
+-m 1683861869 \
+-s 3E5B7A4FC88F2916BC379C54AB6F9193F16E93B5 \
+-f apiclient_key.pem \
+-k NCtU4tvbHCDA0iK9c56AZd65DzmSChen \
+-o .
+```
