@@ -164,6 +164,8 @@ cat ~/.ssh/id_ed25519.pub
 
 `openssl ec -in config/dns/privkey.pem -out rsa_key.pem` 转 rsa 密钥
 
+sudo certbot certonly --manual -d "*.wksoft.cloud" -d "wksoft.cloud" --preferred-challenges dns
+
 
 # 微信支付库配置
 
